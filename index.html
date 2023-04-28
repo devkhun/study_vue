@@ -8,11 +8,24 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
 <script>
-    new Vue({
-       el: "#app",
-       data : {
+    // 인스턴스 생성
+    new Vue({ // 생성자
+       el: "#app", // el 속성 -> 뷰 인스턴스가 그려질 지점 지정
+       data : { // data 속성
            message: 'Hello Vue.js!'
-       }
+       },
+        beforeCreate: function (){
+           console.log("beforeCreate");
+        },
+        created: function() {
+           console.log("created");
+        },
+        mounted: function() {
+           console.log("mounted");
+        },
+        updated : function() {
+           console.log("updated");
+        }
     });
 </script>
 </body>
