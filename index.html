@@ -22,8 +22,10 @@
         },
         mounted: function() {
            console.log("mounted");
+           this.message = "Hello Vue";
         },
         updated : function() {
+           // 뷰 인스턴스에서 데이터 변경이 일어나 화면이 다시 그려졌을 때 호출되는 로직
            console.log("updated");
         }
     });
