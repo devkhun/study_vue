@@ -4,10 +4,7 @@
 </head>
 <body>
 <div id="app">
-    <my-component1></my-component1>
-    <my-component2></my-component2>
-
-    <my-local-component></my-local-component>
+    <child-component v-bind:propsdata="message"></child-component>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
 <script>
@@ -31,6 +28,11 @@
         }
     };
 
+    Vue.component('child-component', {
+        props: ['propsdata'],
+        template: '<p>{{ propsdata }}</p>'
+    });
+
     // 두 번째 컴포넌트 내용
     var cmp2 = {
         template: '<div>두 번째 지역 컴포넌트 : {{ cmp1Data }}</div>',
@@ -48,7 +50,7 @@
             'my-local-component' : cmp
         },
        data : { // data 속성
-           message: 'Hello Vue.js!'
+           message: 'Hello Vue! passed from parent Component'
        },
         beforeCreate: function (){
            console.log("beforeCreate");
@@ -58,17 +60,11 @@
         },
         mounted: function() {
            console.log("mounted");
-           this.message = "Hello Vue";
         },
         updated : function() {
            // 뷰 인스턴스에서 데이터 변경이 일어나 화면이 다시 그려졌을 때 호출되는 로직
            console.log("updated");
         }
-    });
-
-    // 두 번째 인스턴스
-    new Vue({
-        el: '#app2'
     });
 </script>
 </body>
